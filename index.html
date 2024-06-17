@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;        
+}
+</style>
+<body>
+
+<h3>Feedback Form</h3>
+
+<div>
+  <form method="POST" name="google-sheet">
+
+    <label for="name">Name</label>
+    <input type="text" id="fname" name="Name" placeholder="Your name..">
+
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" placeholder="Your category..">
+
+    <label for="product_id">Product ID</label>
+    <input type="text" id="product_id" name="product_id" placeholder="Your product id..">
+
+    <label for="user_id">User ID</label>
+    <input type="text" id="user_id" name="user_id" placeholder="Your user id..">
+
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date" placeholder="Fill the date..">
+
+    <label for="time">Time</label>
+    <input type="time" id="time" name="time" placeholder="Fill the time..">
+<br><br>
+    <label for="Email">Email</label>
+    <input type="email" id="lname" name="Email" placeholder="Type Your Email" size="40" style="height: 35px;">
+    <br><br>
+
+    <label for="rating">rating</label>
+    <input type="number" id="rating" name="rating" placeholder="Rating on a scale of 5.." size="40" style="height: 35px;">
+<br><br>
+    <label for="Feedback">Feedback</label>
+    <input type="text" id="lname" name="Feedback" placeholder="Type Your Feedback">
+
+    
+  
+    <input type="submit" value="Submit" name="submit">
+  </form>
+</div>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbyvu3BKrJETuC-M0QPW-0e2oeStIzBHccxeQHMBwbigwXU0HvHTA0WIK4DAcDsJWo5b/exec'
+  const form = document.forms['google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => alert("Thanks for Contacting us..! We Will Contact You Soon..."))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+
+</body>
+</html>
